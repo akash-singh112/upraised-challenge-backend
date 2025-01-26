@@ -19,11 +19,6 @@ async function DBConnection() {
         ? "DB_INTERNAL_URL is set"
         : "DB_INTERNAL_URL is not set"
     );
-    console.log(
-      process.env.DB_EXTERNAL_URL
-        ? "DB_EXTERNAL_URL is set"
-        : "DB_EXTERNAL_URL is not set"
-    );
     await sequelize.authenticate();
     console.log(
       `Connected to PostgresSQL Database name: ${process.env.DB_NAME}`
