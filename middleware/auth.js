@@ -1,6 +1,5 @@
-const express = require("express");
 const jwt = require("jsonwebtoken");
-const { User } = require("../models");
+const { User } = require("../sequelize/models");
 require("dotenv").config();
 
 async function RegisterFunction(req, res) {

@@ -1,4 +1,4 @@
-const { Gadget } = require("../models");
+const { Gadget } = require("../sequelize/models");
 
 // List of possible codenames
 const codenames = [
@@ -31,7 +31,6 @@ const postGadgets = async (req, res) => {
     const gadgetStatus = status || "Available";
 
     const codename = generateCodeName();
-    console.log("Codename: ", codename);
 
     const newGadget = await Gadget.create({
       name,
@@ -44,7 +43,7 @@ const postGadgets = async (req, res) => {
       content: newGadget,
     });
   } catch (error) {
-    console.log("Error in adding Gadget: ", error.message);
+    console.log("Error in adding Gadget: ", error);
     res.status(500).json({
       success: false,
       message: "Error adding gadget",

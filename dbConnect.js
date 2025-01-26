@@ -1,28 +1,11 @@
-const { Sequelize } = require("sequelize");
-
 require("dotenv").config();
 
-const sequelize = new Sequelize(process.env.DB_INTERNAL_URL, {
-  dialect: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
-});
+const { sequelize } = require("./sequelize/models");
 
 async function DBConnection() {
   try {
-    console.log(
-      process.env.DB_INTERNAL_URL
-        ? "DB_INTERNAL_URL is set"
-        : "DB_INTERNAL_URL is not set"
-    );
     await sequelize.authenticate();
-    console.log(
-      `Connected to PostgresSQL Database name: ${process.env.DB_NAME}`
-    );
+    console.log(`Connected to database!`);
   } catch (err) {
     console.log("Unable to connect to the database:", err.message);
   }
