@@ -136,7 +136,6 @@ const delGadgets = async (req, res) => {
 const selfDestruct = async (req, res) => {
   try {
     const id = req.params.id;
-    console.log(id);
     const { confirmCode } = req.body;
 
     const gadget = await Gadget.findByPk(id);

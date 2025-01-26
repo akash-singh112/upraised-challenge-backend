@@ -4,10 +4,11 @@ const { sequelize } = require("./sequelize/models");
 
 async function DBConnection() {
   try {
+    console.log("Connecting to database...");
     await sequelize.authenticate();
     console.log(`Connected to database!`);
-  } catch (err) {
-    console.log("Unable to connect to the database:", err.message);
+  } catch (e) {
+    console.log("Unable to connect to database:", e.message);
   }
 }
 
